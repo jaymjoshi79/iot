@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP/HTTPS in IoT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #E8FFF5;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #E8FFF5 0%, #D1FFE9 100%);
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #10B981;
+            transition: transform 0.3s ease;
+        }
+
+        .mcu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .spec-box:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .spec-title {
+            color: #10B981;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #10B981;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .applications h4 {
+            color: #1F2937;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .security-note {
+            background: #ECFDF5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid #D1FAE5;
+        }
+
+        .security-note h4 {
+            color: #047857;
+            margin-bottom: 0.5rem;
+        }
+
+        .security-note p {
+            color: #065F46;
+            line-height: 1.6;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a237e;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1a237e;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>HTTP/HTTPS in IoT Systems</h1>
+        <p>Implementing Secure Web Protocols for IoT Communication and Data Exchange</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Protocol Fundamentals</h2>
+                    <p class="mcu-subtitle">Core concepts and implementation in IoT context</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">HTTP Features</div>
+                    <ul class="features-list">
+                        <li>RESTful Architecture</li>
+                        <li>Request-Response Model</li>
+                        <li>Stateless Communication</li>
+                        <li>Resource Identification (URI)</li>
+                        <li>Method-based Operations</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">HTTPS Enhancements</div>
+                    <ul class="features-list">
+                        <li>TLS/SSL Encryption</li>
+                        <li>Certificate Authentication</li>
+                        <li>Data Integrity</li>
+                        <li>Secure Key Exchange</li>
+                        <li>Man-in-Middle Protection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Communication Methods</h2>
+                    <p class="mcu-subtitle">Standard HTTP methods and their IoT applications</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Request Methods</div>
+                    <ul class="features-list">
+                        <li>GET (Data Retrieval)</li>
+                        <li>POST (Resource Creation)</li>
+                        <li>PUT (State Updates)</li>
+                        <li>DELETE (Resource Removal)</li>
+                        <li>PATCH (Partial Updates)</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Response Handling</div>
+                    <ul class="features-list">
+                        <li>Status Codes (2xx, 4xx, 5xx)</li>
+                        <li>Response Headers</li>
+                        <li>Content Negotiation</li>
+                        <li>Error Handling</li>
+                        <li>Caching Mechanisms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">IoT Implementation</h2>
+                    <p class="mcu-subtitle">Practical applications and optimizations for IoT devices</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Integration Features</div>
+                    <ul class="features-list">
+                        <li>RESTful API Design</li>
+                        <li>Cloud Integration</li>
+                        <li>Webhook Support</li>
+                        <li>Long Polling</li>
+                        <li>Server-Sent Events</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Optimization Techniques</div>
+                    <ul class="features-list">
+                        <li>Connection Pooling</li>
+                        <li>Header Compression</li>
+                        <li>Request Batching</li>
+                        <li>Lightweight Payloads</li>
+                        <li>Keep-Alive Connections</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Applications</h4>
+                <ul class="features-list">
+                    <li>IoT Device Management Platforms</li>
+                    <li>Smart Home Control Systems</li>
+                    <li>Industrial Monitoring Solutions</li>
+                    <li>Cloud-Connected Sensors</li>
+                    <li>Web-Based IoT Dashboards</li>
+                </ul>
+            </div>
+            <div class="security-note">
+                <h4>Security Best Practices</h4>
+                <p>Implement proper certificate management, use strong TLS configurations, regularly update security protocols, and follow secure coding practices to protect IoT devices and data transmission.</p>
+            </div>
+        </div>
+    </div>
+ <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="coap-iot.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">CoAP</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="websocket-iot.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">WebSocket</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

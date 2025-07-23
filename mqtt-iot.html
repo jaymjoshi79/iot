@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT in IoT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #EBF5FF;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #EBF5FF 0%, #D1E9FF 100%);
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #3B82F6;
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .spec-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .spec-title {
+            color: #2563EB;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #3B82F6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .applications h4 {
+            color: #1F2937;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a237e;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1a237e;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>MQTT in IoT Systems</h1>
+        <p>Understanding the Message Queuing Telemetry Transport Protocol and its Role in Modern IoT Architecture</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">MQTT Architecture Overview</h2>
+                    <p class="mcu-subtitle">Core components and operational principles of MQTT in IoT implementations</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Protocol Components</div>
+                    <ul class="features-list">
+                        <li>MQTT Broker (Central Message Hub)</li>
+                        <li>Publishers (Data Sources)</li>
+                        <li>Subscribers (Data Consumers)</li>
+                        <li>Topics (Message Channels)</li>
+                        <li>Client Libraries</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Message Properties</div>
+                    <ul class="features-list">
+                        <li>Topic-Based Filtering</li>
+                        <li>Hierarchical Topic Structure</li>
+                        <li>Retained Messages</li>
+                        <li>Clean/Persistent Sessions</li>
+                        <li>Message Queue Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Quality of Service (QoS)</h2>
+                    <p class="mcu-subtitle">Guaranteed message delivery mechanisms in MQTT</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">QoS Levels</div>
+                    <ul class="features-list">
+                        <li>QoS 0: At most once delivery</li>
+                        <li>QoS 1: At least once delivery</li>
+                        <li>QoS 2: Exactly once delivery</li>
+                        <li>Message Acknowledgment</li>
+                        <li>Flow Control Mechanisms</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Implementation Benefits</div>
+                    <ul class="features-list">
+                        <li>Bandwidth Optimization</li>
+                        <li>Reliable Message Delivery</li>
+                        <li>Network Efficiency</li>
+                        <li>Scalable Architecture</li>
+                        <li>Flexible Deployment Options</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Security Features</h2>
+                    <p class="mcu-subtitle">Security mechanisms and best practices in MQTT</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Authentication Methods</div>
+                    <ul class="features-list">
+                        <li>Username/Password Authentication</li>
+                        <li>Client Certificate Authentication</li>
+                        <li>OAuth Token Support</li>
+                        <li>Access Control Lists (ACL)</li>
+                        <li>Client ID Validation</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Data Protection</div>
+                    <ul class="features-list">
+                        <li>TLS/SSL Encryption</li>
+                        <li>Payload Encryption</li>
+                        <li>Secure WebSocket Support</li>
+                        <li>Topic Level Security</li>
+                        <li>Broker Authentication</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Applications</h4>
+                <ul class="features-list">
+                    <li>Smart Home Automation Systems</li>
+                    <li>Industrial IoT Monitoring</li>
+                    <li>Real-time Sensor Networks</li>
+                    <li>Connected Vehicle Applications</li>
+                    <li>Energy Management Systems</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+ <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="iot-protocols.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Communication Protocols</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="coap-iot.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">CoAP</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

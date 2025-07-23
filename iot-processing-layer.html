@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Processing Layer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: -100px auto 4rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #4f46e5;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 2px;
+            flex: 1;
+            background: linear-gradient(to right, #4f46e5, transparent);
+        }
+
+        .processing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .process-item {
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 15px;
+            border-top: 4px solid #4f46e5;
+            transition: transform 0.3s ease;
+        }
+
+        .process-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .process-item h3 {
+            color: #4f46e5;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .process-item p {
+            color: #4b5563;
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1));
+        }
+
+        .feature h3 {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .feature p {
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .data-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 15px;
+        }
+
+        .flow-step {
+            text-align: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4f46e5;
+            font-size: 1.5rem;
+        }
+
+        .flow-step h4 {
+            color: #4f46e5;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        .footer-nav {
+            background: white;
+            padding: 2rem;
+            margin-top: auto;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a237e;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1a237e;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1rem;
+                min-height: 400px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .main-content {
+                margin-top: -50px;
+            }
+
+            .data-flow {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .flow-step:not(:last-child)::after {
+                content: '↓';
+                right: 50%;
+                top: 100%;
+                transform: translateX(50%);
+            }
+            .nav-container {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>IoT Processing Layer</h1>
+        <p>The intelligent core that transforms raw data into actionable insights through advanced analytics and real-time processing</p>
+    </div>
+
+    <div class="main-content">
+        <div class="card">
+            <h2 class="section-title">Core Functions</h2>
+            <div class="processing-grid">
+                <div class="process-item">
+                    <h3>Data Aggregation</h3>
+                    <p>Collects and combines data from multiple IoT devices and sensors, preparing it for processing and analysis.</p>
+                </div>
+                <div class="process-item">
+                    <h3>Real-time Processing</h3>
+                    <p>Handles immediate data processing needs, enabling quick responses to critical events and time-sensitive operations.</p>
+                </div>
+                <div class="process-item">
+                    <h3>Data Analytics</h3>
+                    <p>Applies advanced analytics techniques to extract meaningful insights and patterns from the collected data.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-container">
+                <div class="feature">
+                    <h3>Edge Computing</h3>
+                    <p>Process data closer to the source, reducing latency and bandwidth usage while improving response times.</p>
+                </div>
+                <div class="feature">
+                    <h3>Machine Learning</h3>
+                    <p>Implement intelligent algorithms for predictive analytics and automated decision-making.</p>
+                </div>
+                <div class="feature">
+                    <h3>Data Filtering</h3>
+                    <p>Smart filtering mechanisms to process only relevant data and reduce storage requirements.</p>
+                </div>
+                <div class="feature">
+                    <h3>Event Processing</h3>
+                    <p>Complex event processing for real-time monitoring and automated responses to specific conditions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Data Flow</h2>
+            <div class="data-flow">
+                <div class="flow-step">
+                    <h4>Collection</h4>
+                    <p>Raw data intake</p>
+                </div>
+                <div class="flow-step">
+                    <h4>Processing</h4>
+                    <p>Data transformation</p>
+                </div>
+                <div class="flow-step">
+                    <h4>Analysis</h4>
+                    <p>Pattern recognition</p>
+                </div>
+                <div class="flow-step">
+                    <h4>Action</h4>
+                    <p>Decision execution</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<nav class="footer-nav">
+        <div class="nav-container">
+            <a href="iot-network.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Network Layer</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="iot-application-layer.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Application Layer</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

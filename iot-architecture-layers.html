@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Architecture Layers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a237e, #0d47a1);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1a237e, #0d47a1, #1a237e);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .intro {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #e1e1e1;
+            font-size: 1.2rem;
+            padding: 0 1rem;
+        }
+
+        .layer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .layer-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #1a237e;
+        }
+
+        .layer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .layer-icon {
+            width: 70px;
+            height: 70px;
+            background: #e3f2fd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .layer-card:hover .layer-icon {
+            background: #bbdefb;
+        }
+
+        .layer-title {
+            color: #1a237e;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .layer-description {
+            color: #444;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .examples {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #f0f2f5;
+        }
+
+        .examples-title {
+            color: #1a237e;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .examples-list {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .footer-nav {
+            background: white;
+            padding: 2rem;
+            margin-top: auto;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a237e;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1a237e;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .intro {
+                font-size: 1.1rem;
+                padding: 0 1.5rem;
+            }
+
+            .layer-grid {
+                gap: 1.5rem;
+            }
+
+            .layer-card {
+                padding: 1.5rem;
+            }
+
+            .nav-container {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>IoT Architecture Layers</h1>
+            <p class="intro">
+                The Internet of Things (IoT) architecture is built on four fundamental layers, each playing a vital role
+                in transforming raw data into meaningful actions. Together, these layers create a robust framework that
+                enables seamless communication between devices and delivers value to end-users.
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="layer-grid">
+            <div class="layer-card">
+                <div class="layer-icon">
+                    <svg width="35" height="35" viewBox="0 0 24 24" fill="#1a237e">
+                        <path d="M12 6a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V9a3 3 0 0 0-3-3zm0-4a7 7 0 0 1 7 7v6a7 7 0 0 1-14 0V9a7 7 0 0 1 7-7z"/>
+                    </svg>
+                </div>
+                <h2 class="layer-title">Perception Layer</h2>
+                <p class="layer-description">
+                    The perception layer acts as the sensory system of IoT, gathering physical data from the environment
+                    through various sensors and actuators. This foundational layer bridges the physical and digital worlds,
+                    enabling the first step in data collection.
+                </p>
+                <div class="examples">
+                    <h3 class="examples-title">Key Components:</h3>
+                    <p class="examples-list">
+                        Temperature sensors, humidity sensors, motion detectors, RFID tags, GPS modules, pressure sensors,
+                        and various other data collection devices
+                    </p>
+                </div>
+            </div>
+
+            <div class="layer-card">
+                <div class="layer-icon">
+                    <svg width="35" height="35" viewBox="0 0 24 24" fill="#1a237e">
+                        <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+                    </svg>
+                </div>
+                <h2 class="layer-title">Network Layer</h2>
+                <p class="layer-description">
+                    The network layer serves as the communication backbone of IoT systems, facilitating secure and efficient
+                    data transmission between devices and processing systems. It ensures reliable connectivity and data
+                    transfer across the IoT ecosystem.
+                </p>
+                <div class="examples">
+                    <h3 class="examples-title">Core Technologies:</h3>
+                    <p class="examples-list">
+                        Wi-Fi, Bluetooth, ZigBee, LoRaWAN, 5G, Ethernet, cellular networks, and other communication protocols
+                    </p>
+                </div>
+            </div>
+
+            <div class="layer-card">
+                <div class="layer-icon">
+                    <svg width="35" height="35" viewBox="0 0 24 24" fill="#1a237e">
+                        <path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm4.5 2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/>
+                    </svg>
+                </div>
+                <h2 class="layer-title">Processing Layer</h2>
+                <p class="layer-description">
+                    The processing layer transforms raw data into actionable insights through advanced analytics and
+                    processing capabilities. This middleware layer handles data storage, analysis, and decision-making,
+                    forming the intelligence center of IoT systems.
+                </p>
+                <div class="examples">
+                    <h3 class="examples-title">Key Features:</h3>
+                    <p class="examples-list">
+                        Data analytics, machine learning algorithms, cloud computing services, data storage systems,
+                        and real-time processing capabilities
+                    </p>
+                </div>
+            </div>
+
+            <div class="layer-card">
+                <div class="layer-icon">
+                    <svg width="35" height="35" viewBox="0 0 24 24" fill="#1a237e">
+                        <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/>
+                    </svg>
+                </div>
+                <h2 class="layer-title">Application Layer</h2>
+                <p class="layer-description">
+                    The application layer represents the user-facing component of IoT systems, delivering practical
+                    solutions and services to end-users. It transforms processed data into meaningful applications
+                    that solve real-world problems.
+                </p>
+                <div class="examples">
+                    <h3 class="examples-title">Common Applications:</h3>
+                    <p class="examples-list">
+                        Smart home automation systems, industrial monitoring platforms, healthcare applications,
+                        smart city services, and energy management solutions
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="iot-characteristics.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Key Characteristics</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="perception-layer.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Perception Layer</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

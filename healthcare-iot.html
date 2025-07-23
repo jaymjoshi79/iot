@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare IoT Applications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #F0F9FF;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #F0F9FF 0%, #BAE6FD 100%);
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #0EA5E9;
+            transition: transform 0.3s ease;
+        }
+
+        .mcu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .spec-box:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #F0F9FF;
+        }
+
+        .spec-title {
+            color: #0EA5E9;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #0EA5E9;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tech-note {
+            background: #F0F9FF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid #BAE6FD;
+        }
+
+        .tech-note h4 {
+            color: #0369A1;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-note p {
+            color: #075985;
+            line-height: 1.6;
+        }
+
+        .comparison-box {
+            background: #F0F9FF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #E0F2FE;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #0EA5E9;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #0369A1;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #0369A1;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Healthcare IoT Applications</h1>
+        <p>Revolutionizing Patient Care Through Connected Medical Technologies</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Patient Monitoring</h2>
+                    <p class="mcu-subtitle">Advanced remote monitoring solutions for enhanced patient care</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Vital Signs Monitoring</div>
+                    <ul class="features-list">
+                        <li>Real-time Heart Rate Tracking</li>
+                        <li>Blood Pressure Monitoring</li>
+                        <li>Body Temperature Analysis</li>
+                        <li>Respiratory Rate Detection</li>
+                        <li>Blood Oxygen Level Monitoring</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Remote Patient Care</div>
+                    <ul class="features-list">
+                        <li>Telehealth Integration</li>
+                        <li>Medication Adherence Tracking</li>
+                        <li>Fall Detection Systems</li>
+                        <li>Emergency Alert Systems</li>
+                        <li>Sleep Pattern Analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Hospital Asset Management</h2>
+                    <p class="mcu-subtitle">Optimizing healthcare facility operations</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Equipment Tracking</div>
+                    <ul class="features-list">
+                        <li>Medical Device Location</li>
+                        <li>Equipment Utilization Analysis</li>
+                        <li>Maintenance Scheduling</li>
+                        <li>Inventory Management</li>
+                        <li>Calibration Monitoring</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Environmental Monitoring</div>
+                    <ul class="features-list">
+                        <li>Temperature Control</li>
+                        <li>Humidity Monitoring</li>
+                        <li>Air Quality Assessment</li>
+                        <li>Sterilization Tracking</li>
+                        <li>Energy Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Clinical Operations</h2>
+                    <p class="mcu-subtitle">Streamlining healthcare delivery and workflow</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Workflow Optimization</div>
+                    <ul class="features-list">
+                        <li>Staff Location Tracking</li>
+                        <li>Patient Flow Management</li>
+                        <li>Resource Allocation</li>
+                        <li>Operating Room Scheduling</li>
+                        <li>Emergency Response</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Data Management</div>
+                    <ul class="features-list">
+                        <li>Electronic Health Records</li>
+                        <li>Clinical Decision Support</li>
+                        <li>Predictive Analytics</li>
+                        <li>Patient Data Security</li>
+                        <li>Compliance Monitoring</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Healthcare IoT Benefits</h4>
+                <ul class="features-list">
+                    <li>Improved Patient Outcomes</li>
+                    <li>Enhanced Operational Efficiency</li>
+                    <li>Reduced Healthcare Costs</li>
+                    <li>Better Resource Utilization</li>
+                    <li>Enhanced Quality of Care</li>
+                </ul>
+            </div>
+            <div class="tech-note">
+                <h4>Implementation Considerations</h4>
+                <p>Healthcare IoT implementation requires careful attention to patient privacy, data security, regulatory compliance (HIPAA), and seamless integration with existing hospital systems while maintaining continuous patient care operations.</p>
+            </div>
+            <div class="comparison-box">
+                <h4>Key Technologies</h4>
+                <ul class="features-list">
+                    <li>Medical-grade Sensors</li>
+                    <li>Secure Communication Networks</li>
+                    <li>Healthcare Analytics Platforms</li>
+                    <li>Mobile Health Applications</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="industrial-iot.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Industrial IoT</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="warehouse-iot.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Warehouse</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

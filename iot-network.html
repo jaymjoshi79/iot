@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Network Layer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            padding: 8rem 0 14rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: 0;
+            right: 0;
+            height: 160px;
+            background: #f8fafc;
+            transform: skewY(-3deg);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .main-content {
+            margin: -6rem auto 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .protocols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .protocol-item {
+            background: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .protocol-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .protocol-item h3 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #6366f1;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+        }
+
+        .architecture-diagram {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .layers {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .layer {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .layer h3 {
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+        .footer-nav {
+            background: white;
+            padding: 2rem;
+            margin-top: auto;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a237e;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1a237e;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 0 12rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .main-content {
+                margin-top: -4rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+            .nav-container {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1>IoT Network Layer</h1>
+            <p>The vital communication infrastructure that enables seamless connectivity between IoT devices, gateways, and cloud platforms.</p>
+        </div>
+    </div>
+
+    <div class="main-content container">
+        <div class="card">
+            <h2 class="section-title">Network Protocols</h2>
+            <div class="protocols">
+                <div class="protocol-item">
+                    <h3>MQTT</h3>
+                    <p>Lightweight messaging protocol optimized for high-latency networks.</p>
+                    <div class="tag-container">
+                        <span class="tag">Publish/Subscribe</span>
+                        <span class="tag">QoS Support</span>
+                        <span class="tag">Real-time</span>
+                    </div>
+                </div>
+
+                <div class="protocol-item">
+                    <h3>CoAP</h3>
+                    <p>Specialized web transfer protocol for use with constrained nodes.</p>
+                    <div class="tag-container">
+                        <span class="tag">REST-based</span>
+                        <span class="tag">UDP</span>
+                        <span class="tag">Lightweight</span>
+                    </div>
+                </div>
+
+                <div class="protocol-item">
+                    <h3>LoRaWAN</h3>
+                    <p>Long range, low power protocol for wide area IoT networks.</p>
+                    <div class="tag-container">
+                        <span class="tag">Long Range</span>
+                        <span class="tag">Low Power</span>
+                        <span class="tag">Secure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Network Architecture</h2>
+            <div class="layers">
+                <div class="layer">
+                    <h3>Edge Layer</h3>
+                    <p>Handles local data processing and device connectivity, reducing latency and bandwidth usage.</p>
+                </div>
+                <div class="layer">
+                    <h3>Gateway Layer</h3>
+                    <p>Manages protocol translation and data aggregation from multiple devices.</p>
+                </div>
+                <div class="layer">
+                    <h3>Cloud Layer</h3>
+                    <p>Provides centralized processing, storage, and advanced analytics capabilities.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Key Features</h2>
+            <div class="protocols">
+                <div class="protocol-item">
+                    <h3>Security</h3>
+                    <p>End-to-end encryption and authentication mechanisms ensure data privacy.</p>
+                </div>
+                <div class="protocol-item">
+                    <h3>Scalability</h3>
+                    <p>Supports millions of connected devices with efficient resource management.</p>
+                </div>
+                <div class="protocol-item">
+                    <h3>Reliability</h3>
+                    <p>Ensures consistent data delivery with error correction and recovery.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="perception-layer.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Perception Layer</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="iot-processing-layer.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Processing Layer</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

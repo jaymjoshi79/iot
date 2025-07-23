@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Applications in IoT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #F0FDF4;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #F0FDF4 0%, #BBF7D0 100%);
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #16A34A;
+            transition: transform 0.3s ease;
+        }
+
+        .mcu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .spec-box:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #F0FDF4;
+        }
+
+        .spec-title {
+            color: #16A34A;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #16A34A;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tech-note {
+            background: #F0FDF4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid #BBF7D0;
+        }
+
+        .tech-note h4 {
+            color: #15803D;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-note p {
+            color: #166534;
+            line-height: 1.6;
+        }
+
+        .comparison-box {
+            background: #F0FDF4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #DCFCE7;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #16A34A;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #15803D;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #15803D;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Food Applications in IoT</h1>
+        <p>Revolutionizing Food Industry Through Smart Technology and Innovation</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Smart Agriculture</h2>
+                    <p class="mcu-subtitle">Precision farming and crop management systems</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Monitoring Systems</div>
+                    <ul class="features-list">
+                        <li>Soil Condition Sensors</li>
+                        <li>Weather Monitoring</li>
+                        <li>Crop Health Analysis</li>
+                        <li>Irrigation Control</li>
+                        <li>Pest Detection</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Farm Management</div>
+                    <ul class="features-list">
+                        <li>Automated Irrigation</li>
+                        <li>Precision Fertilization</li>
+                        <li>Yield Prediction</li>
+                        <li>Resource Optimization</li>
+                        <li>Equipment Tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Supply Chain Management</h2>
+                    <p class="mcu-subtitle">End-to-end food tracking and quality control</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Quality Control</div>
+                    <ul class="features-list">
+                        <li>Temperature Monitoring</li>
+                        <li>Humidity Control</li>
+                        <li>Contamination Detection</li>
+                        <li>Shelf-life Tracking</li>
+                        <li>Quality Certification</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Logistics Management</div>
+                    <ul class="features-list">
+                        <li>Real-time Tracking</li>
+                        <li>Route Optimization</li>
+                        <li>Storage Monitoring</li>
+                        <li>Inventory Management</li>
+                        <li>Delivery Verification</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Smart Food Service</h2>
+                    <p class="mcu-subtitle">Intelligent food preparation and service systems</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Kitchen Management</div>
+                    <ul class="features-list">
+                        <li>Smart Appliances</li>
+                        <li>Recipe Management</li>
+                        <li>Inventory Tracking</li>
+                        <li>Temperature Control</li>
+                        <li>Waste Monitoring</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Service Operations</div>
+                    <ul class="features-list">
+                        <li>Order Management</li>
+                        <li>Quality Assurance</li>
+                        <li>Customer Analytics</li>
+                        <li>Service Automation</li>
+                        <li>Resource Planning</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Industry Benefits</h4>
+                <ul class="features-list">
+                    <li>Enhanced Food Safety</li>
+                    <li>Reduced Waste</li>
+                    <li>Improved Efficiency</li>
+                    <li>Better Quality Control</li>
+                    <li>Increased Sustainability</li>
+                </ul>
+            </div>
+            <div class="tech-note">
+                <h4>Implementation Considerations</h4>
+                <p>Food IoT implementation requires careful attention to food safety regulations, data security, sensor reliability, and integration with existing food processing and handling systems.</p>
+            </div>
+            <div class="comparison-box">
+                <h4>Key Technologies</h4>
+                <ul class="features-list">
+                    <li>Smart Sensors</li>
+                    <li>Blockchain Tracking</li>
+                    <li>AI/ML Analytics</li>
+                    <li>Cloud Computing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="smart-home-iot.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Smart Home</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="industrial-iot.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Industrial IoT</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensors & Actuators in IoT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #EBF5FF;
+            padding: 4rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .section-title {
+            color: #1F2937;
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #3B82F6;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #2563EB;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card p {
+            color: #4B5563;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            color: #374151;
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .feature-list li::before {
+            content: "•";
+            color: #3B82F6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .info-box {
+            background-color: #F3F4F6;
+            border-left: 4px solid #3B82F6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-box h3 {
+            color: #1F2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box p {
+            color: #4B5563;
+            line-height: 1.6;
+        }
+                 .footer-nav {
+            background: white;
+            padding: 2rem;
+            margin-top: auto;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a237e;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1a237e;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Sensors & Actuators in IoT</h1>
+        <p>Discover the essential components that enable IoT devices to interact with the physical world through sensing and actuation</p>
+    </div>
+
+    <div class="container">
+        <div class="info-box">
+            <h3>What are Sensors and Actuators?</h3>
+            <p>Sensors are devices that detect and measure physical properties from the environment, while actuators convert electrical signals into physical actions. Together, they form the interface between the digital and physical worlds in IoT systems.</p>
+        </div>
+
+        <h2 class="section-title">Types of Sensors</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Environmental Sensors</h3>
+                <p>Monitor environmental conditions and changes</p>
+                <ul class="feature-list">
+                    <li>Temperature Sensors (Thermistors, RTDs)</li>
+                    <li>Humidity Sensors (Capacitive, Resistive)</li>
+                    <li>Air Quality Sensors (CO2, VOC)</li>
+                    <li>Pressure Sensors (Barometric, Differential)</li>
+                    <li>Light Sensors (Photodiodes, Photoresistors)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Motion & Position Sensors</h3>
+                <p>Detect movement and spatial orientation</p>
+                <ul class="feature-list">
+                    <li>Accelerometers (Linear acceleration)</li>
+                    <li>Gyroscopes (Angular velocity)</li>
+                    <li>Magnetometers (Magnetic fields)</li>
+                    <li>PIR Sensors (Motion detection)</li>
+                    <li>GPS Modules (Location tracking)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Proximity & Distance Sensors</h3>
+                <p>Measure distance and detect nearby objects</p>
+                <ul class="feature-list">
+                    <li>Ultrasonic Sensors</li>
+                    <li>Infrared (IR) Sensors</li>
+                    <li>Capacitive Sensors</li>
+                    <li>LIDAR Sensors</li>
+                    <li>Time-of-Flight (ToF) Sensors</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title">Types of Actuators</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Motion Actuators</h3>
+                <p>Create mechanical movement and control</p>
+                <ul class="feature-list">
+                    <li>DC Motors (Continuous rotation)</li>
+                    <li>Servo Motors (Position control)</li>
+                    <li>Stepper Motors (Precise movement)</li>
+                    <li>Linear Actuators</li>
+                    <li>Hydraulic & Pneumatic Systems</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Electrical Actuators</h3>
+                <p>Control electrical circuits and power</p>
+                <ul class="feature-list">
+                    <li>Relays (Circuit switching)</li>
+                    <li>Solenoids (Electromagnetic force)</li>
+                    <li>Transistors (Signal amplification)</li>
+                    <li>LED Indicators</li>
+                    <li>Display Modules (LCD, OLED)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Other Actuators</h3>
+                <p>Specialized control and feedback</p>
+                <ul class="feature-list">
+                    <li>Buzzers & Speakers</li>
+                    <li>Vibration Motors</li>
+                    <li>Heating Elements</li>
+                    <li>Cooling Fans</li>
+                    <li>Pump Systems</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>Applications in IoT</h3>
+            <p>Sensors and actuators are crucial in smart homes, industrial automation, healthcare monitoring, environmental monitoring, smart agriculture, and many other IoT applications. They enable automated data collection and responsive control systems that make IoT solutions effective and valuable.</p>
+        </div>
+    </div>
+<nav class="footer-nav">
+        <div class="nav-container">
+            <a href="iot-hardware.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">IoT Hardware</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="microcontrollers.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Microcontrollers</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

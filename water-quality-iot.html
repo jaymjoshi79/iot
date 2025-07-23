@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Quality Monitoring using IoT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #EFF6FF;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #EFF6FF 0%, #BFDBFE 100%);
+        }
+
+        .header h1 {
+            color: #1E3A8A;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #1E40AF;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #2563EB;
+            transition: transform 0.3s ease;
+        }
+
+        .mcu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1E3A8A;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #3B82F6;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .spec-box:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #EFF6FF;
+        }
+
+        .spec-title {
+            color: #2563EB;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #2563EB;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tech-note {
+            background: #EFF6FF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid #BFDBFE;
+        }
+
+        .tech-note h4 {
+            color: #1E40AF;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-note p {
+            color: #1E3A8A;
+            line-height: 1.6;
+        }
+
+        .comparison-box {
+            background: #EFF6FF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #DBEAFE;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #2563EB;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1E40AF;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #2563EB;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Rest of the HTML content remains the same -->
+    <div class="header">
+        <h1>Water Quality Monitoring using IoT</h1>
+        <p>Smart Solutions for Real-time Water Quality Analysis and Management</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Parameter Monitoring</h2>
+                    <p class="mcu-subtitle">Real-time water quality parameter analysis</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Physical Parameters</div>
+                    <ul class="features-list">
+                        <li>Temperature Monitoring</li>
+                        <li>Turbidity Analysis</li>
+                        <li>Color Detection</li>
+                        <li>Total Dissolved Solids</li>
+                        <li>Flow Rate Measurement</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Chemical Parameters</div>
+                    <ul class="features-list">
+                        <li>pH Level Analysis</li>
+                        <li>Dissolved Oxygen</li>
+                        <li>Conductivity Testing</li>
+                        <li>Chlorine Detection</li>
+                        <li>Heavy Metal Analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Data Management</h2>
+                    <p class="mcu-subtitle">Advanced analytics and reporting systems</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Data Collection</div>
+                    <ul class="features-list">
+                        <li>Real-time Monitoring</li>
+                        <li>Historical Data Storage</li>
+                        <li>Automated Sampling</li>
+                        <li>Data Validation</li>
+                        <li>Secure Transmission</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Analysis Tools</div>
+                    <ul class="features-list">
+                        <li>Trend Analysis</li>
+                        <li>Predictive Analytics</li>
+                        <li>Quality Reports</li>
+                        <li>Compliance Monitoring</li>
+                        <li>Alert Generation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Control Systems</h2>
+                    <p class="mcu-subtitle">Automated control and response mechanisms</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Control Mechanisms</div>
+                    <ul class="features-list">
+                        <li>Automated Treatment</li>
+                        <li>Flow Control</li>
+                        <li>Chemical Dosing</li>
+                        <li>Filtration Control</li>
+                        <li>Emergency Response</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">System Integration</div>
+                    <ul class="features-list">
+                        <li>SCADA Integration</li>
+                        <li>Remote Management</li>
+                        <li>Mobile Monitoring</li>
+                        <li>Cloud Computing</li>
+                        <li>API Integration</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>System Benefits</h4>
+                <ul class="features-list">
+                    <li>Early Contamination Detection</li>
+                    <li>Regulatory Compliance</li>
+                    <li>Resource Optimization</li>
+                    <li>Cost Reduction</li>
+                    <li>Environmental Protection</li>
+                </ul>
+            </div>
+            <div class="tech-note">
+                <h4>Implementation Considerations</h4>
+                <p>Water quality monitoring systems require careful consideration of sensor calibration, maintenance schedules, data accuracy, and compliance with environmental regulations while ensuring continuous operation in various environmental conditions.</p>
+            </div>
+            <div class="comparison-box">
+                <h4>Key Technologies</h4>
+                <ul class="features-list">
+                    <li>Smart Sensors</li>
+                    <li>Data Analytics</li>
+                    <li>Cloud Platform</li>
+                    <li>Wireless Communication</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="warehouse-iot.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Warehouse</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="smart-city.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Smart City</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

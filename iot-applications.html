@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications of IoT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #F5F3FF;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #F5F3FF 0%, #E9D5FF 100%);
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #8B5CF6;
+            transition: transform 0.3s ease;
+        }
+
+        .mcu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .spec-box:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #F5F3FF;
+        }
+
+        .spec-title {
+            color: #8B5CF6;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #8B5CF6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tech-note {
+            background: #F5F3FF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid #E9D5FF;
+        }
+
+        .tech-note h4 {
+            color: #6D28D9;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-note p {
+            color: #5B21B6;
+            line-height: 1.6;
+        }
+
+        .comparison-box {
+            background: #F8F5FF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #EDE9FE;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a237e;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1a237e;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Applications of IoT</h1>
+        <p>Transforming Industries Through Connected Intelligence</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Smart Home Solutions</h2>
+                    <p class="mcu-subtitle">Revolutionizing residential living through connected devices</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Home Automation</div>
+                    <ul class="features-list">
+                        <li>Smart Lighting Control</li>
+                        <li>Automated HVAC Systems</li>
+                        <li>Smart Door Locks</li>
+                        <li>Connected Appliances</li>
+                        <li>Voice-Controlled Systems</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Security & Safety</div>
+                    <ul class="features-list">
+                        <li>Video Surveillance</li>
+                        <li>Motion Detection</li>
+                        <li>Smart Fire Alarms</li>
+                        <li>Water Leak Detection</li>
+                        <li>Energy Monitoring</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Industrial IoT (IIoT)</h2>
+                    <p class="mcu-subtitle">Enhancing manufacturing and industrial processes</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Manufacturing</div>
+                    <ul class="features-list">
+                        <li>Predictive Maintenance</li>
+                        <li>Asset Tracking</li>
+                        <li>Quality Control</li>
+                        <li>Supply Chain Optimization</li>
+                        <li>Real-time Monitoring</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Process Optimization</div>
+                    <ul class="features-list">
+                        <li>Energy Management</li>
+                        <li>Production Analytics</li>
+                        <li>Inventory Management</li>
+                        <li>Worker Safety Systems</li>
+                        <li>Environmental Monitoring</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Healthcare IoT</h2>
+                    <p class="mcu-subtitle">Improving patient care and medical services</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Patient Care</div>
+                    <ul class="features-list">
+                        <li>Remote Patient Monitoring</li>
+                        <li>Wearable Health Devices</li>
+                        <li>Medical Asset Tracking</li>
+                        <li>Smart Medical Alerts</li>
+                        <li>Telemedicine Solutions</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Hospital Management</div>
+                    <ul class="features-list">
+                        <li>Equipment Monitoring</li>
+                        <li>Environmental Control</li>
+                        <li>Staff Management</li>
+                        <li>Inventory Control</li>
+                        <li>Emergency Response</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Smart Cities</h2>
+                    <p class="mcu-subtitle">Building connected urban infrastructure</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Urban Infrastructure</div>
+                    <ul class="features-list">
+                        <li>Smart Traffic Management</li>
+                        <li>Public Transportation</li>
+                        <li>Waste Management</li>
+                        <li>Street Lighting Control</li>
+                        <li>Environmental Monitoring</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Public Services</div>
+                    <ul class="features-list">
+                        <li>Emergency Response</li>
+                        <li>Public Safety Systems</li>
+                        <li>Smart Parking</li>
+                        <li>Energy Grid Management</li>
+                        <li>Water Management</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Key Benefits</h4>
+                <ul class="features-list">
+                    <li>Improved Efficiency and Automation</li>
+                    <li>Enhanced Safety and Security</li>
+                    <li>Better Resource Management</li>
+                    <li>Data-Driven Decision Making</li>
+                    <li>Improved Quality of Life</li>
+                </ul>
+            </div>
+            <div class="tech-note">
+                <h4>Implementation Considerations</h4>
+                <p>Successful IoT implementation requires careful consideration of infrastructure requirements, security measures, scalability needs, and integration capabilities across different systems and platforms.</p>
+            </div>
+            <div class="comparison-box">
+                <h4>Common Technologies</h4>
+                <ul class="features-list">
+                    <li>Wireless Sensor Networks</li>
+                    <li>Cloud Computing Platforms</li>
+                    <li>Data Analytics Systems</li>
+                    <li>Mobile Applications</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="iot-data-security.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Data Security</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="smart-home-iot.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Smart Home</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial IoT (IIoT)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #F5F3FF;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #F5F3FF 0%, #E9D5FF 100%);
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #8B5CF6;
+            transition: transform 0.3s ease;
+        }
+
+        .mcu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .spec-box:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #F5F3FF;
+        }
+
+        .spec-title {
+            color: #8B5CF6;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #8B5CF6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tech-note {
+            background: #F5F3FF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid #E9D5FF;
+        }
+
+        .tech-note h4 {
+            color: #6D28D9;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-note p {
+            color: #5B21B6;
+            line-height: 1.6;
+        }
+
+        .comparison-box {
+            background: #F8F5FF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #EDE9FE;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a237e;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1a237e;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Industrial IoT (IIoT)</h1>
+        <p>Transforming Manufacturing and Industrial Processes Through Connected Intelligence</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Smart Manufacturing</h2>
+                    <p class="mcu-subtitle">Advanced manufacturing solutions powered by IIoT</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Production Optimization</div>
+                    <ul class="features-list">
+                        <li>Real-time Production Monitoring</li>
+                        <li>Quality Control Automation</li>
+                        <li>Process Optimization</li>
+                        <li>Automated Assembly Lines</li>
+                        <li>Digital Twin Integration</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Asset Management</div>
+                    <ul class="features-list">
+                        <li>Predictive Maintenance</li>
+                        <li>Equipment Health Monitoring</li>
+                        <li>Asset Performance Analytics</li>
+                        <li>Resource Utilization</li>
+                        <li>Automated Inventory Control</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Supply Chain & Logistics</h2>
+                    <p class="mcu-subtitle">Optimizing supply chain operations and logistics</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Supply Chain Management</div>
+                    <ul class="features-list">
+                        <li>Real-time Tracking</li>
+                        <li>Inventory Optimization</li>
+                        <li>Demand Forecasting</li>
+                        <li>Supplier Integration</li>
+                        <li>Order Management</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Warehouse Operations</div>
+                    <ul class="features-list">
+                        <li>Automated Storage Systems</li>
+                        <li>Smart Material Handling</li>
+                        <li>Inventory Tracking</li>
+                        <li>Pick and Pack Optimization</li>
+                        <li>Environmental Monitoring</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Industrial Safety & Monitoring</h2>
+                    <p class="mcu-subtitle">Ensuring workplace safety and environmental compliance</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Safety Systems</div>
+                    <ul class="features-list">
+                        <li>Worker Safety Monitoring</li>
+                        <li>Emergency Response Systems</li>
+                        <li>Environmental Sensors</li>
+                        <li>PPE Compliance Tracking</li>
+                        <li>Access Control Systems</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Environmental Monitoring</div>
+                    <ul class="features-list">
+                        <li>Emissions Monitoring</li>
+                        <li>Energy Consumption</li>
+                        <li>Waste Management</li>
+                        <li>Resource Utilization</li>
+                        <li>Compliance Reporting</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>IIoT Benefits</h4>
+                <ul class="features-list">
+                    <li>Increased Operational Efficiency</li>
+                    <li>Reduced Downtime and Maintenance Costs</li>
+                    <li>Improved Quality Control</li>
+                    <li>Enhanced Worker Safety</li>
+                    <li>Better Resource Management</li>
+                </ul>
+            </div>
+            <div class="tech-note">
+                <h4>Implementation Considerations</h4>
+                <p>Successful IIoT implementation requires careful planning of network infrastructure, cybersecurity measures, data management strategies, and integration with existing industrial systems while ensuring minimal disruption to ongoing operations.</p>
+            </div>
+            <div class="comparison-box">
+                <h4>Key Technologies</h4>
+                <ul class="features-list">
+                    <li>Industrial Sensors and Actuators</li>
+                    <li>Edge Computing Systems</li>
+                    <li>Industrial Networks (OT/IT)</li>
+                    <li>Advanced Analytics Platforms</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="food-iot.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Food Applications</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="healthcare-iot.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Healthcare IoT</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

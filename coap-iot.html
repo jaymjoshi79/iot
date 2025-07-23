@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoAP in IoT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #F0F7FF;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #F0F7FF 0%, #E6F0FF 100%);
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #4F46E5;
+            transition: transform 0.3s ease;
+        }
+
+        .mcu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .spec-title {
+            color: #4F46E5;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #4F46E5;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .applications h4 {
+            color: #1F2937;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .info-box {
+            background: #EEF2FF;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #E0E7FF;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a237e;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1a237e;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CoAP in IoT Systems</h1>
+        <p>Understanding the Constrained Application Protocol and its Implementation in Resource-Constrained IoT Networks</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Core Architecture</h2>
+                    <p class="mcu-subtitle">Fundamental components and principles of CoAP protocol</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Protocol Features</div>
+                    <ul class="features-list">
+                        <li>REST-based Architecture</li>
+                        <li>UDP Transport Layer</li>
+                        <li>Client-Server Communication</li>
+                        <li>Lightweight Header Structure</li>
+                        <li>Built-in Resource Discovery</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Message Types</div>
+                    <ul class="features-list">
+                        <li>Confirmable Messages (CON)</li>
+                        <li>Non-confirmable Messages (NON)</li>
+                        <li>Acknowledgements (ACK)</li>
+                        <li>Reset Messages (RST)</li>
+                        <li>Piggybacked Responses</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Request Methods & Response Codes</h2>
+                    <p class="mcu-subtitle">CoAP interaction model and status handling</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Request Methods</div>
+                    <ul class="features-list">
+                        <li>GET (Resource Retrieval)</li>
+                        <li>POST (Resource Creation)</li>
+                        <li>PUT (Resource Update)</li>
+                        <li>DELETE (Resource Removal)</li>
+                        <li>Observe Option Support</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Response Categories</div>
+                    <ul class="features-list">
+                        <li>2.xx (Success)</li>
+                        <li>4.xx (Client Error)</li>
+                        <li>5.xx (Server Error)</li>
+                        <li>Separate Responses</li>
+                        <li>Error Handling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Advanced Features</h2>
+                    <p class="mcu-subtitle">Extended capabilities and security measures</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Security Features</div>
+                    <ul class="features-list">
+                        <li>DTLS Security Layer</li>
+                        <li>Pre-shared Key Mode</li>
+                        <li>Raw Public Key Mode</li>
+                        <li>Certificate Mode</li>
+                        <li>Access Control</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Protocol Extensions</div>
+                    <ul class="features-list">
+                        <li>Resource Directory</li>
+                        <li>Block-wise Transfer</li>
+                        <li>Observable Resources</li>
+                        <li>Group Communication</li>
+                        <li>Cross-Protocol Proxying</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Applications</h4>
+                <ul class="features-list">
+                    <li>Smart Energy Management Systems</li>
+                    <li>Industrial Automation Networks</li>
+                    <li>Building Management Systems</li>
+                    <li>Healthcare Monitoring Devices</li>
+                    <li>Agricultural Sensor Networks</li>
+                </ul>
+            </div>
+            <div class="info-box">
+                <p>CoAP is specifically designed for constrained devices and networks, making it ideal for IoT applications where resources are limited and efficiency is crucial.</p>
+            </div>
+        </div>
+    </div>
+ <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="mqtt-iot.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">MQTT</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="http-iot.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">HTTP/HTTPs</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

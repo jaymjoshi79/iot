@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT in Retail Industry</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #F8FAFC;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #64748B;
+            transition: transform 0.3s ease;
+        }
+
+        .mcu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .spec-box:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #F8FAFC;
+        }
+
+        .spec-title {
+            color: #64748B;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #64748B;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tech-note {
+            background: #F8FAFC;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid #E2E8F0;
+        }
+
+        .tech-note h4 {
+            color: #475569;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-note p {
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .comparison-box {
+            background: #F8FAFC;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #E2E8F0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #64748B;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #475569;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #475569;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>IoT in Retail Industry</h1>
+        <p>Transforming Shopping Experiences Through Connected Technology</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Customer Experience</h2>
+                    <p class="mcu-subtitle">Enhanced shopping journey and personalization</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Smart Shopping</div>
+                    <ul class="features-list">
+                        <li>Digital Price Tags</li>
+                        <li>Smart Shopping Carts</li>
+                        <li>Self-Checkout Systems</li>
+                        <li>Virtual Try-On</li>
+                        <li>Interactive Displays</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Personalization</div>
+                    <ul class="features-list">
+                        <li>Customer Analytics</li>
+                        <li>Targeted Promotions</li>
+                        <li>Loyalty Programs</li>
+                        <li>Shopping History</li>
+                        <li>Recommendation Engine</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Store Operations</h2>
+                    <p class="mcu-subtitle">Automated monitoring and management systems</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Store Management</div>
+                    <ul class="features-list">
+                        <li>Inventory Tracking</li>
+                        <li>Staff Management</li>
+                        <li>Energy Monitoring</li>
+                        <li>Queue Management</li>
+                        <li>Store Analytics</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Smart Equipment</div>
+                    <ul class="features-list">
+                        <li>Smart Shelves</li>
+                        <li>Automated Storage</li>
+                        <li>HVAC Control</li>
+                        <li>Smart Lighting</li>
+                        <li>Security Systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Supply Chain Integration</h2>
+                    <p class="mcu-subtitle">End-to-end supply chain visibility and optimization</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Supply Chain Management</div>
+                    <ul class="features-list">
+                        <li>Real-time Tracking</li>
+                        <li>Demand Forecasting</li>
+                        <li>Automated Ordering</li>
+                        <li>Quality Control</li>
+                        <li>Cold Chain Monitoring</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Logistics Optimization</div>
+                    <ul class="features-list">
+                        <li>Route Planning</li>
+                        <li>Delivery Tracking</li>
+                        <li>Warehouse Integration</li>
+                        <li>Returns Management</li>
+                        <li>Last-mile Delivery</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Retail Benefits</h4>
+                <ul class="features-list">
+                    <li>Enhanced Customer Experience</li>
+                    <li>Increased Operational Efficiency</li>
+                    <li>Reduced Costs</li>
+                    <li>Better Inventory Management</li>
+                    <li>Data-Driven Decision Making</li>
+                </ul>
+            </div>
+            <div class="tech-note">
+                <h4>Implementation Considerations</h4>
+                <p>Successful retail IoT implementation requires careful integration with existing systems, strong data security measures, staff training, and consideration for customer privacy while ensuring seamless shopping experiences.</p>
+            </div>
+            <div class="comparison-box">
+                <h4>Key Technologies</h4>
+                <ul class="features-list">
+                    <li>RFID Systems</li>
+                    <li>Beacon Technology</li>
+                    <li>AI/ML Analytics</li>
+                    <li>Cloud Computing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="smart-city.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Smart City</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="agriculture-iot.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Agriculture IoT</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

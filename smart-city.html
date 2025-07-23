@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart City IoT Applications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #F0FDF4;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #F0FDF4 0%, #BBF7D0 100%);
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #16A34A;
+            transition: transform 0.3s ease;
+        }
+
+        .mcu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .spec-box:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #F0FDF4;
+        }
+
+        .spec-title {
+            color: #16A34A;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #16A34A;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tech-note {
+            background: #F0FDF4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid #BBF7D0;
+        }
+
+        .tech-note h4 {
+            color: #15803D;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-note p {
+            color: #166534;
+            line-height: 1.6;
+        }
+
+        .comparison-box {
+            background: #F0FDF4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #DCFCE7;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #16A34A;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #15803D;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #15803D;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Smart City IoT Applications</h1>
+        <p>Building Sustainable and Connected Urban Environments Through IoT Innovation</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Urban Mobility</h2>
+                    <p class="mcu-subtitle">Intelligent transportation and traffic management systems</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Traffic Management</div>
+                    <ul class="features-list">
+                        <li>Real-time Traffic Monitoring</li>
+                        <li>Adaptive Traffic Signals</li>
+                        <li>Smart Parking Systems</li>
+                        <li>Public Transport Tracking</li>
+                        <li>Emergency Vehicle Priority</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Transportation Services</div>
+                    <ul class="features-list">
+                        <li>Bike-sharing Systems</li>
+                        <li>Electric Vehicle Charging</li>
+                        <li>Multi-modal Transport</li>
+                        <li>Passenger Information</li>
+                        <li>Fleet Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Environmental Management</h2>
+                    <p class="mcu-subtitle">Sustainable environmental monitoring and control</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Environmental Monitoring</div>
+                    <ul class="features-list">
+                        <li>Air Quality Monitoring</li>
+                        <li>Weather Monitoring</li>
+                        <li>Noise Level Detection</li>
+                        <li>Water Quality Control</li>
+                        <li>Pollution Tracking</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Resource Management</div>
+                    <ul class="features-list">
+                        <li>Smart Waste Management</li>
+                        <li>Water Distribution</li>
+                        <li>Energy Grid Management</li>
+                        <li>Green Space Monitoring</li>
+                        <li>Solar Panel Systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Public Safety & Services</h2>
+                    <p class="mcu-subtitle">Enhanced urban security and citizen services</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Public Safety</div>
+                    <ul class="features-list">
+                        <li>Video Surveillance</li>
+                        <li>Emergency Response</li>
+                        <li>Disaster Management</li>
+                        <li>Crime Prevention</li>
+                        <li>Infrastructure Monitoring</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Smart Services</div>
+                    <ul class="features-list">
+                        <li>Smart Street Lighting</li>
+                        <li>Digital Information Kiosks</li>
+                        <li>Public Wi-Fi Networks</li>
+                        <li>Smart Buildings</li>
+                        <li>Citizen Engagement Apps</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Smart City Benefits</h4>
+                <ul class="features-list">
+                    <li>Improved Quality of Life</li>
+                    <li>Reduced Environmental Impact</li>
+                    <li>Enhanced Public Safety</li>
+                    <li>Efficient Resource Usage</li>
+                    <li>Better Urban Planning</li>
+                </ul>
+            </div>
+            <div class="tech-note">
+                <h4>Implementation Considerations</h4>
+                <p>Smart city implementation requires careful planning of infrastructure, data privacy measures, cybersecurity protocols, and integration with existing urban systems while ensuring inclusive access to all citizens.</p>
+            </div>
+            <div class="comparison-box">
+                <h4>Key Technologies</h4>
+                <ul class="features-list">
+                    <li>IoT Sensors Networks</li>
+                    <li>5G Communication</li>
+                    <li>Big Data Analytics</li>
+                    <li>AI/ML Systems</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="water-quality-iot.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Water Quality</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="retail-iot.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Retail Industry</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

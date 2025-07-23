@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Communication Modules</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #EBF5FF;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #3B82F6;
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .spec-title {
+            color: #2563EB;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #3B82F6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .applications h4 {
+            color: #1F2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a237e;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1a237e;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>IoT Communication Modules</h1>
+        <p>Comprehensive overview of wireless technologies for IoT connectivity</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Wi-Fi Modules</h2>
+                    <p class="mcu-subtitle">High-bandwidth wireless connectivity for IoT devices</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Key Features</div>
+                    <ul class="features-list">
+                        <li>High data transfer rates (100+ Mbps)</li>
+                        <li>Wide coverage area (up to 100m)</li>
+                        <li>Supports TCP/IP networking</li>
+                        <li>WPA/WPA2 security</li>
+                        <li>Widespread infrastructure</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Technical Specs</div>
+                    <ul class="features-list">
+                        <li>2.4GHz and 5GHz bands</li>
+                        <li>Multiple antenna support</li>
+                        <li>Power-saving modes</li>
+                        <li>IPv4/IPv6 compatibility</li>
+                        <li>Mesh networking capability</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Applications</h4>
+                <ul class="features-list">
+                    <li>Smart home automation</li>
+                    <li>Video streaming devices</li>
+                    <li>Industrial monitoring</li>
+                    <li>Cloud-connected sensors</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Bluetooth & BLE</h2>
+                    <p class="mcu-subtitle">Short-range, low-power wireless technology</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Core Features</div>
+                    <ul class="features-list">
+                        <li>Low power consumption</li>
+                        <li>Easy device pairing</li>
+                        <li>Secure communication</li>
+                        <li>Range: 10-100m</li>
+                        <li>Data rate: 1-2 Mbps</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">BLE Advantages</div>
+                    <ul class="features-list">
+                        <li>Ultra-low power usage</li>
+                        <li>Fast connection times</li>
+                        <li>Compatibility with mobile devices</li>
+                        <li>Mesh networking support</li>
+                        <li>Simple protocol stack</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Applications</h4>
+                <ul class="features-list">
+                    <li>Wearable devices</li>
+                    <li>Health monitoring systems</li>
+                    <li>Asset tracking</li>
+                    <li>Smart beacons</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">LoRa & LoRaWAN</h2>
+                    <p class="mcu-subtitle">Long-range, low-power wide area network technology</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Technical Features</div>
+                    <ul class="features-list">
+                        <li>Range up to 15km</li>
+                        <li>Very low power consumption</li>
+                        <li>Operates at sub-GHz frequencies</li>
+                        <li>Robust against interference</li>
+                        <li>Bidirectional communication</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Network Features</div>
+                    <ul class="features-list">
+                        <li>Star network topology</li>
+                        <li>End-to-end encryption</li>
+                        <li>Adaptive data rate</li>
+                        <li>Geolocation support</li>
+                        <li>Long battery life</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Applications</h4>
+                <ul class="features-list">
+                    <li>Smart agriculture</li>
+                    <li>Environmental monitoring</li>
+                    <li>Smart city infrastructure</li>
+                    <li>Asset tracking</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Cellular (4G/5G)</h2>
+                    <p class="mcu-subtitle">High-speed, wide-area cellular connectivity</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">5G Features</div>
+                    <ul class="features-list">
+                        <li>Ultra-high bandwidth (1+ Gbps)</li>
+                        <li>Ultra-low latency</li>
+                        <li>Massive device connectivity</li>
+                        <li>Network slicing support</li>
+                        <li>Enhanced mobile broadband</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">IoT Capabilities</div>
+                    <ul class="features-list">
+                        <li>Wide area coverage</li>
+                        <li>Quality of Service (QoS)</li>
+                        <li>Advanced security features</li>
+                        <li>Global roaming support</li>
+                        <li>Reliable connectivity</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Applications</h4>
+                <ul class="features-list">
+                    <li>Connected vehicles</li>
+                    <li>Industrial automation</li>
+                    <li>Smart city infrastructure</li>
+                    <li>Remote monitoring systems</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="microcontrollers.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Microcontrollers</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="iot-protocols.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Communication Protocol</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Glossary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #F0FDF4;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #F0FDF4 0%, #BBF7D0 100%);
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #16A34A;
+            transition: transform 0.3s ease;
+        }
+
+        .mcu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .spec-box:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #F0FDF4;
+        }
+
+        .spec-title {
+            color: #16A34A;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .term-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .term-list li {
+            color: #374151;
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .term-list li::before {
+            content: "•";
+            color: #16A34A;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .term {
+            font-weight: bold;
+            color: #15803D;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .protocols {
+            background-color: #DCFCE7;
+            color: #166534;
+        }
+
+        .hardware {
+            background-color: #FEF9C3;
+            color: #854D0E;
+        }
+
+        .software {
+            background-color: #E0E7FF;
+            color: #3730A3;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tech-note {
+            background: #F0FDF4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid #BBF7D0;
+        }
+
+        .tech-note h4 {
+            color: #15803D;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-note p {
+            color: #166534;
+            line-height: 1.6;
+        }
+
+        .comparison-box {
+            background: #F0FDF4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #DCFCE7;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #16A34A;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #15803D;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #15803D;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>IoT Glossary</h1>
+        <p>Essential Terms and Definitions in Internet of Things Technology</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Communication Protocols</h2>
+                    <p class="mcu-subtitle">Standard protocols and communication technologies</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Wireless Protocols</div>
+                    <ul class="term-list">
+                        <li>
+                            <span class="term">MQTT (Message Queuing Telemetry Transport)</span>
+                            Lightweight messaging protocol for small sensors and mobile devices
+                        </li>
+                        <li>
+                            <span class="term">LoRaWAN (Long Range Wide Area Network)</span>
+                            Low-power protocol for long-range IoT communications
+                        </li>
+                        <li>
+                            <span class="term">Zigbee</span>
+                            Low-power, short-range wireless communications protocol
+                        </li>
+                    </ul>
+                    <span class="category-tag protocols">Network Protocols</span>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Internet Protocols</div>
+                    <ul class="term-list">
+                        <li>
+                            <span class="term">CoAP (Constrained Application Protocol)</span>
+                            Internet protocol for constrained devices
+                        </li>
+                        <li>
+                            <span class="term">HTTP/HTTPS</span>
+                            Standard web protocols for IoT data transmission
+                        </li>
+                        <li>
+                            <span class="term">WebSocket</span>
+                            Protocol for full-duplex communication channels
+                        </li>
+                    </ul>
+                    <span class="category-tag protocols">Web Protocols</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Hardware Components</h2>
+                    <p class="mcu-subtitle">Essential IoT hardware terminology</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Processing Units</div>
+                    <ul class="term-list">
+                        <li>
+                            <span class="term">MCU (Microcontroller Unit)</span>
+                            Integrated circuit containing processor, memory, and I/O peripherals
+                        </li>
+                        <li>
+                            <span class="term">SBC (Single Board Computer)</span>
+                            Complete computer built on a single circuit board
+                        </li>
+                        <li>
+                            <span class="term">SoC (System on Chip)</span>
+                            Integrated circuit integrating all components of a computer
+                        </li>
+                    </ul>
+                    <span class="category-tag hardware">Hardware Components</span>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Sensors & Actuators</div>
+                    <ul class="term-list">
+                        <li>
+                            <span class="term">Sensor Node</span>
+                            Device that contains sensors, processor, and communication module
+                        </li>
+                        <li>
+                            <span class="term">Actuator</span>
+                            Device that converts energy into mechanical motion
+                        </li>
+                        <li>
+                            <span class="term">Gateway</span>
+                            Device that connects IoT devices to the broader network
+                        </li>
+                    </ul>
+                    <span class="category-tag hardware">Input/Output Devices</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Software & Services</h2>
+                    <p class="mcu-subtitle">Cloud and software terminology</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Cloud Services</div>
+                    <ul class="term-list">
+                        <li>
+                            <span class="term">IoT Platform</span>
+                            Cloud-based service for managing IoT devices and data
+                        </li>
+                        <li>
+                            <span class="term">Edge Computing</span>
+                            Data processing at or near the source of data generation
+                        </li>
+                        <li>
+                            <span class="term">Cloud Computing</span>
+                            Computing services delivered over the internet
+                        </li>
+                    </ul>
+                    <span class="category-tag software">Cloud Technologies</span>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Data Management</div>
+                    <ul class="term-list">
+                        <li>
+                            <span class="term">Data Analytics</span>
+                            Process of examining data sets to draw conclusions
+                        </li>
+                        <li>
+                            <span class="term">Time Series Database</span>
+                            Database optimized for time-stamped data
+                        </li>
+                        <li>
+                            <span class="term">Data Lake</span>
+                            Storage repository that holds raw data
+                        </li>
+                    </ul>
+                    <span class="category-tag software">Data Systems</span>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Usage</h4>
+                <ul class="term-list">
+                    <li>Understanding technical documentation</li>
+                    <li>Communication with IoT professionals</li>
+                    <li>Project planning and implementation</li>
+                </ul>
+            </div>
+            <div class="tech-note">
+                <h4>Note on Technical Terms</h4>
+                <p>IoT terminology evolves rapidly with technological advancement. Stay updated with the latest terms and definitions through industry publications and technical documentation.</p>
+            </div>
+        </div>
+    </div>
+
+    <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="iot-resources.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">IoT Resources</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="iot-careers.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">IoT Careers</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

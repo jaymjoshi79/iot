@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IoT Learning Hub - Complete Study Resource</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background: #1e3c72;
+            padding: 1rem;
+            position: fixed;
+            width: 250px;
+            height: 100vh;
+            color: white;
+            overflow-y: auto;
+        }
+
+        nav h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem;
+            display: block;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-links .sub-menu {
+            margin-left: 1rem;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        .nav-links .active .sub-menu {
+            display: block;
+        }
+
+        /* Main Content Styles */
+        main {
+            margin-left: 250px;
+            padding: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Header Styles */
+        .page-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            color: #1e3c72;
+            margin: 1.5rem 0 1rem;
+            border-bottom: 2px solid #1e3c72;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #2a5298;
+            margin: 1rem 0;
+        }
+
+        /* Components */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+        .highlight-box {
+            background: #e3f2fd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        code {
+            font-family: monospace;
+        }
+
+        /* Tabs for Code Examples */
+        .tab-container {
+            margin: 1.5rem 0;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tab-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: #e9ecef;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .tab-button.active {
+            background: #1e3c72;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+	footer {
+            background-color: #282c34; /* Dark background */
+            color: #ffffff; /* White text */
+            padding: 20px 0; /* Padding for spacing */
+            text-align: center; /* Center-align text */
+            font-family: Arial, sans-serif; /* Clean font */
+            font-size: 16px; /* Slightly larger text */
+            border-top: 3px solid #007BFF; /* Accent border at the top */
+        }
+        footer a {
+            color: #00d4ff; /* Light blue link color */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Bold links */
+        }
+        footer a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h3>IoT Learning Hub</h3>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li>
+                <a href="#fundamentals">IoT Fundamentals</a>
+                <ul class="sub-menu">
+                    <li><a href="what-is-iot.html">What is IoT?</a></li>
+                    <li><a href="iot-history.html">History & Evolution</a></li>
+                    <li><a href="iot-characteristics.html">Key Characteristics</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="iot-architecture-layers.html">IoT Architecture</a>
+                <ul class="sub-menu">
+                    <li><a href="perception-layer.html">Perception Layer</a></li>
+                    <li><a href="iot-network.html">Network Layer</a></li>
+                    <li><a href="iot-processing-layer.html">Processing Layer</a></li>
+                    <li><a href="iot-application-layer.html">Application Layer</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="iot-hardware.html">Hardware Components</a>
+                <ul class="sub-menu">
+                    <li><a href="sensors-actuators.html">Sensors & Actuators</a></li>
+                    <li><a href="microcontrollers.html">Microcontrollers</a></li>
+                    <li><a href="iot-communications.html">Communication Modules</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="iot-protocols.html">Communication Protocols</a>
+                <ul class="sub-menu">
+                    <li><a href="mqtt-iot.html">MQTT</a></li>
+                    <li><a href="coap-iot.html">CoAP</a></li>
+                    <li><a href="http-iot.html">HTTP/HTTPS</a></li>
+                    <li><a href="websocket-iot.html">WebSocket</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="iot-security.html">IoT Security</a>
+                <ul class="sub-menu">
+                    <li><a href="iot-security-device.html">Device Security</a></li>
+                    <li><a href="network-security.html">Network Security</a></li>
+                    <li><a href="iot-data-security.html">Data Security</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="iot-applications.html">Applications</a>
+                <ul class="sub-menu">
+                    <li><a href="smart-home-iot.html">Smart Home</a></li>
+		    <li><a href="food-iot.html">Food Application</a></li>
+                    <li><a href="industrial-iot.html">Industrial IoT</a></li>
+                    <li><a href="healthcare-iot.html">Healthcare</a></li>
+		    <li><a href="warehouse-iot.html">Warehouse</a></li>
+		    <li><a href="water-quality-iot.html">Water Quality</a></li>
+                    <li><a href="smart-city.html">Smart Cities</a></li>
+                    <li><a href="retail-iot.html">Retail Industries</a></li>
+		    <li><a href="agriculture-iot.html">Agriculture</a></li>	
+		    <li><a href="driver-assistant.html">Driver Assistant</a></li>
+                </ul>
+            </li>
+            <li><a href="iot-projects.html">Practice Projects</a></li>
+            <li><a href="iot-resources.html">Additional Resources</a></li>
+            <li><a href="iot-glossary.html">Glossary</a></li>
+            <li><a href="iot-careers.html">Career in IoT</a></li>
+	    <li><a href="future-of-iot.html">Future of IoT</a></li>
+        </ul>
+    </nav>
+
+    <main>
+	 <footer>
+        <p>&copy; 2024 <strong>Dr. Jay Joshi</strong>. All Rights Reserved.</p>
+        <p>
+            <a href="mailto:jay.joshi.ec@gecbhar.gujgov.edu.in">Email</a> | 
+            <a href="https://www.linkedin.com/in/dr-jay-joshi-14176011" target="_blank">LinkedIn</a> | 
+	    <a href="https://jaymjoshi79.github.io/jaymjoshi79-portfolio">Webpage</a> | 
+	    <a href="contactus.html">Contact Us</a>
+        </p>
+    </footer>
+        <div class="page-header">
+            <h1>Welcome to IoT Learning Hub</h1>
+            <p>Your comprehensive guide to understanding and implementing Internet of Things technologies</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Getting Started with IoT</h2>
+            <p>Welcome to your journey into the world of Internet of Things (IoT). This comprehensive learning resource will guide you through everything from basic concepts to advanced implementations.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h3>For Beginners</h3>
+                    <p>Start with IoT fundamentals and basic concepts. Learn about the building blocks of IoT systems.</p>
+                </div>
+                <div class="card">
+                    <h3>For Intermediate</h3>
+                    <p>Dive into protocols, programming, and basic project implementations.</p>
+                </div>
+                <div class="card">
+                    <h3>For Advanced</h3>
+                    <p>Explore complex architectures, security considerations, and enterprise implementations.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Learning Path Recommendation</h3>
+                <ol>
+                    <li>Start with IoT Fundamentals</li>
+                    <li>Understand IoT Architecture</li>
+                    <li>Learn about Hardware Components</li>
+                    <li>Study Communication Protocols</li>
+                    <li>Focus on Security Aspects</li>
+                    <li>Explore Real-world Applications</li>
+                    <li>Practice with Projects</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Latest Updates in IoT</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Industry 4.0</h3>
+                    <p>Explore how IoT is transforming manufacturing and industrial processes.</p>
+                </div>
+                <div class="card">
+                    <h3>5G Integration</h3>
+                    <p>Learn about the impact of 5G technology on IoT implementations.</p>
+                </div>
+                <div class="card">
+                    <h3>Edge Computing</h3>
+                    <p>Understand the role of edge computing in modern IoT architectures.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Navigation Interactivity
+        document.querySelectorAll('.nav-links > li > a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const parent = link.parentElement;
+                if (parent.querySelector('.sub-menu')) {
+                    e.preventDefault();
+                    parent.classList.toggle('active');
+                }
+            });
+        });
+
+        // Tab Functionality
+        function setupTabs() {
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabContainer = button.closest('.tab-container');
+                    const tabId = button.dataset.tab;
+                    
+                    tabContainer.querySelectorAll('.tab-button').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    tabContainer.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    button.classList.add('active');
+                    tabContainer.querySelector(`.tab-content[data-tab="${tabId}"]`).classList.add('active');
+                });
+            });
+        }
+
+        setupTabs();
+    </script>
+</body>
+</html>

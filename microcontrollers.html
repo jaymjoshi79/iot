@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular Microcontrollers in IoT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #EBF5FF;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #3B82F6;
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .spec-title {
+            color: #2563EB;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #3B82F6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .applications h4 {
+            color: #1F2937;
+            margin-bottom: 0.5rem;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a237e;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1a237e;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Popular Microcontrollers in IoT</h1>
+        <p>Detailed overview of the most widely used microcontrollers in IoT applications</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Arduino (ATmega328P)</h2>
+                    <p class="mcu-subtitle">The classic choice for beginners and prototyping</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Core Specifications</div>
+                    <ul class="features-list">
+                        <li>8-bit AVR Architecture</li>
+                        <li>16 MHz Clock Speed</li>
+                        <li>32 KB Flash Memory</li>
+                        <li>2 KB SRAM</li>
+                        <li>1 KB EEPROM</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">I/O Capabilities</div>
+                    <ul class="features-list">
+                        <li>14 Digital I/O Pins</li>
+                        <li>6 Analog Input Pins</li>
+                        <li>6 PWM Channels</li>
+                        <li>UART, I2C, SPI Support</li>
+                        <li>5V Operating Voltage</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Applications</h4>
+                <ul class="features-list">
+                    <li>Educational Projects</li>
+                    <li>Hobby Electronics</li>
+                    <li>Simple Sensor Monitoring</li>
+                    <li>Basic Automation Systems</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">ESP32 & ESP8266</h2>
+                    <p class="mcu-subtitle">Powerful WiFi-enabled microcontrollers</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">ESP32 Specifications</div>
+                    <ul class="features-list">
+                        <li>Dual-core 240 MHz</li>
+                        <li>520 KB SRAM</li>
+                        <li>4 MB Flash Memory</li>
+                        <li>WiFi + Bluetooth 4.2</li>
+                        <li>Rich Peripheral Set</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">ESP8266 Specifications</div>
+                    <ul class="features-list">
+                        <li>Single-core 80 MHz</li>
+                        <li>160 KB RAM</li>
+                        <li>4 MB Flash Memory</li>
+                        <li>WiFi Enabled</li>
+                        <li>Low Cost Solution</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Applications</h4>
+                <ul class="features-list">
+                    <li>Smart Home Devices</li>
+                    <li>WiFi-enabled Sensors</li>
+                    <li>Web Servers</li>
+                    <li>Wireless Data Logging</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Raspberry Pi Pico</h2>
+                    <p class="mcu-subtitle">High-performance microcontroller with excellent price-performance ratio</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Core Features</div>
+                    <ul class="features-list">
+                        <li>RP2040 Dual-core Arm Cortex M0+</li>
+                        <li>133 MHz Clock Speed</li>
+                        <li>264 KB SRAM</li>
+                        <li>2 MB Flash Memory</li>
+                        <li>Programmable I/O (PIO)</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Interfaces</div>
+                    <ul class="features-list">
+                        <li>26 GPIO Pins</li>
+                        <li>2 UART, 2 I2C, 2 SPI</li>
+                        <li>16 PWM Channels</li>
+                        <li>USB 1.1 Controller</li>
+                        <li>ADC with 4 Inputs</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Applications</h4>
+                <ul class="features-list">
+                    <li>Machine Learning Projects</li>
+                    <li>Real-time Control Systems</li>
+                    <li>Data Acquisition</li>
+                    <li>LED Matrix Control</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">STM32 Series</h2>
+                    <p class="mcu-subtitle">Professional-grade ARM Cortex-M based microcontrollers</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Key Features</div>
+                    <ul class="features-list">
+                        <li>ARM Cortex-M Core</li>
+                        <li>Up to 480 MHz Clock</li>
+                        <li>Up to 2 MB Flash</li>
+                        <li>Up to 1 MB RAM</li>
+                        <li>Advanced Peripherals</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Capabilities</div>
+                    <ul class="features-list">
+                        <li>Rich Communication Interfaces</li>
+                        <li>Advanced Timers</li>
+                        <li>DMA Controllers</li>
+                        <li>Hardware Encryption</li>
+                        <li>Low Power Modes</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Applications</h4>
+                <ul class="features-list">
+                    <li>Industrial Control Systems</li>
+                    <li>Medical Devices</li>
+                    <li>Complex IoT Nodes</li>
+                    <li>Automotive Systems</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Texas Instruments MSP430</h2>
+                    <p class="mcu-subtitle">Ultra-low-power microcontroller for battery-powered applications</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Power Features</div>
+                    <ul class="features-list">
+                        <li>Ultra-Low Power Consumption</li>
+                        <li>Multiple Power Modes</li>
+                        <li>Fast Wake-up Time</li>
+                        <li>1.8V to 3.6V Operation</li>
+                        <li>Low Leakage Current</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Technical Specs</div>
+                    <ul class="features-list">
+                        <li>16-bit RISC Architecture</li>
+                        <li>Up to 16 MHz Clock</li>
+                        <li>Up to 512 KB Flash</li>
+                        <li>Up to 66 KB RAM</li>
+                        <li>Integrated ADC/DAC</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Common Applications</h4>
+                <ul class="features-list">
+                    <li>Battery-Powered Sensors</li>
+                    <li>Energy Harvesting Systems</li>
+                    <li>Wireless Sensor Nodes</li>
+                    <li>Portable Medical Devices</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<nav class="footer-nav">
+        <div class="nav-container">
+            <a href="sensors-actuators.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Sensors & Actuators</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="iot-communications.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Communication Modules</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

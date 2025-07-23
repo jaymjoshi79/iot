@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Projects in IoT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #F0FDF4;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #F0FDF4 0%, #BBF7D0 100%);
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #16A34A;
+            transition: transform 0.3s ease;
+        }
+
+        .mcu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .spec-box:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #F0FDF4;
+        }
+
+        .spec-title {
+            color: #16A34A;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #16A34A;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .beginner {
+            background-color: #DCFCE7;
+            color: #166534;
+        }
+
+        .intermediate {
+            background-color: #FEF9C3;
+            color: #854D0E;
+        }
+
+        .advanced {
+            background-color: #FEE2E2;
+            color: #991B1B;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tech-note {
+            background: #F0FDF4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid #BBF7D0;
+        }
+
+        .tech-note h4 {
+            color: #15803D;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-note p {
+            color: #166534;
+            line-height: 1.6;
+        }
+
+        .comparison-box {
+            background: #F0FDF4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #DCFCE7;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #16A34A;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #15803D;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #15803D;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Practice Projects in IoT</h1>
+        <p>Hands-on Learning Projects for IoT Development</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Home Automation Projects</h2>
+                    <p class="mcu-subtitle">Smart home solutions for beginners</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Smart Environment</div>
+                    <ul class="features-list">
+                        <li>Temperature Monitoring System</li>
+                        <li>Automated Plant Watering</li>
+                        <li>Air Quality Monitor</li>
+                        <li>Smart Lighting Control</li>
+                        <li>Home Security System</li>
+                    </ul>
+                    <span class="difficulty beginner">Beginner Friendly</span>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Required Components</div>
+                    <ul class="features-list">
+                        <li>ESP8266/ESP32</li>
+                        <li>Various Sensors</li>
+                        <li>Relay Modules</li>
+                        <li>LED Strips</li>
+                        <li>Power Supply Units</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Wearable Technology</h2>
+                    <p class="mcu-subtitle">Health and fitness monitoring devices</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Health Monitors</div>
+                    <ul class="features-list">
+                        <li>Heart Rate Monitor</li>
+                        <li>Step Counter</li>
+                        <li>Sleep Quality Tracker</li>
+                        <li>Temperature Monitor</li>
+                        <li>Fall Detection System</li>
+                    </ul>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Components Needed</div>
+                    <ul class="features-list">
+                        <li>Arduino Nano/Lilypad</li>
+                        <li>Health Sensors</li>
+                        <li>Battery Modules</li>
+                        <li>OLED Display</li>
+                        <li>Bluetooth Module</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Industrial Monitoring</h2>
+                    <p class="mcu-subtitle">Advanced industrial automation projects</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Monitoring Systems</div>
+                    <ul class="features-list">
+                        <li>Machine Status Monitor</li>
+                        <li>Energy Consumption Tracker</li>
+                        <li>Predictive Maintenance</li>
+                        <li>Environmental Monitor</li>
+                        <li>Asset Tracking System</li>
+                    </ul>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Required Hardware</div>
+                    <ul class="features-list">
+                        <li>Raspberry Pi/Industrial PC</li>
+                        <li>Industrial Sensors</li>
+                        <li>Network Equipment</li>
+                        <li>Power Monitors</li>
+                        <li>Gateway Devices</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Learning Outcomes</h4>
+                <ul class="features-list">
+                    <li>Hardware Integration Skills</li>
+                    <li>Programming Experience</li>
+                    <li>Network Communication</li>
+                    <li>Data Analysis</li>
+                    <li>System Design</li>
+                </ul>
+            </div>
+            <div class="tech-note">
+                <h4>Project Tips</h4>
+                <p>Start with simpler projects and gradually increase complexity. Document your progress, test thoroughly, and always follow proper safety guidelines when working with electronic components.</p>
+            </div>
+            <div class="comparison-box">
+                <h4>Essential Skills</h4>
+                <ul class="features-list">
+                    <li>Basic Electronics</li>
+                    <li>Programming (Python/C++)</li>
+                    <li>Networking Basics</li>
+                    <li>Cloud Platforms</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="agriculture-iot.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">Agriculture Application</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="iot-resources.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Additional Resources</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

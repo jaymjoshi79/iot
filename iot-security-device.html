@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Security in IoT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #F5F3FF;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(135deg, #F5F3FF 0%, #E9D5FF 100%);
+        }
+
+        .header h1 {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #4B5563;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .mcu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #8B5CF6;
+            transition: transform 0.3s ease;
+        }
+
+        .mcu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mcu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .mcu-title {
+            color: #1F2937;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mcu-subtitle {
+            color: #4B5563;
+            font-size: 1.1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-box {
+            background: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .spec-box:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #F5F3FF;
+        }
+
+        .spec-title {
+            color: #8B5CF6;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            color: #374151;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #8B5CF6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .applications {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .applications h4 {
+            color: #1F2937;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .tech-note {
+            background: #F5F3FF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid #E9D5FF;
+        }
+
+        .tech-note h4 {
+            color: #6D28D9;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-note p {
+            color: #5B21B6;
+            line-height: 1.6;
+        }
+
+        .comparison-box {
+            background: #F8F5FF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #EDE9FE;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a237e;
+            background: white;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #1a237e;
+        }
+
+        .nav-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .mcu-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Device Security in IoT</h1>
+        <p>Comprehensive Security Measures for Protected IoT Device Deployments</p>
+    </div>
+
+    <div class="container">
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Authentication & Access Control</h2>
+                    <p class="mcu-subtitle">Essential security mechanisms for device identity and access management</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Device Authentication</div>
+                    <ul class="features-list">
+                        <li>X.509 Digital Certificates</li>
+                        <li>Two-Factor Authentication</li>
+                        <li>Secure Boot Process</li>
+                        <li>Unique Device Identifiers</li>
+                        <li>Hardware Security Modules</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Access Control</div>
+                    <ul class="features-list">
+                        <li>Role-Based Access Control</li>
+                        <li>OAuth 2.0 Protocol</li>
+                        <li>Token-Based Authorization</li>
+                        <li>Device Whitelisting</li>
+                        <li>API Authentication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Data Protection</h2>
+                    <p class="mcu-subtitle">Securing data at rest and in transit</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Encryption Methods</div>
+                    <ul class="features-list">
+                        <li>TLS/SSL Protocol</li>
+                        <li>AES-256 Encryption</li>
+                        <li>End-to-End Encryption</li>
+                        <li>Public Key Infrastructure</li>
+                        <li>Secure Key Storage</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Data Security</div>
+                    <ul class="features-list">
+                        <li>Secure Storage Solutions</li>
+                        <li>Data Backup & Recovery</li>
+                        <li>Secure Data Transmission</li>
+                        <li>Data Integrity Checks</li>
+                        <li>Privacy Compliance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mcu-card">
+            <div class="mcu-header">
+                <div>
+                    <h2 class="mcu-title">Security Management</h2>
+                    <p class="mcu-subtitle">Ongoing security maintenance and threat protection</p>
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-title">Device Management</div>
+                    <ul class="features-list">
+                        <li>Firmware Updates</li>
+                        <li>Security Patches</li>
+                        <li>Remote Device Management</li>
+                        <li>Configuration Management</li>
+                        <li>Device Monitoring</li>
+                    </ul>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-title">Threat Protection</div>
+                    <ul class="features-list">
+                        <li>Intrusion Detection</li>
+                        <li>DDoS Protection</li>
+                        <li>Vulnerability Scanning</li>
+                        <li>Security Auditing</li>
+                        <li>Incident Response</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="applications">
+                <h4>Security Best Practices</h4>
+                <ul class="features-list">
+                    <li>Regular Security Assessments</li>
+                    <li>Zero Trust Architecture</li>
+                    <li>Security by Design Principle</li>
+                    <li>Continuous Monitoring</li>
+                    <li>Defense in Depth Strategy</li>
+                </ul>
+            </div>
+            <div class="tech-note">
+                <h4>Security Considerations</h4>
+                <p>Implementing comprehensive security measures is crucial for protecting IoT devices from evolving cyber threats and ensuring the integrity of IoT ecosystems.</p>
+            </div>
+            <div class="comparison-box">
+                <h4>Security Layers</h4>
+                <ul class="features-list">
+                    <li>Physical Security</li>
+                    <li>Network Security</li>
+                    <li>Application Security</li>
+                    <li>Data Security</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="footer-nav">
+        <div class="nav-container">
+            <a href="iot-security.html" class="nav-card">
+                <div class="arrow">←</div>
+                <div class="nav-title">Previous</div>
+                <div class="nav-description">IoT Security</div>
+            </a>
+            
+            <a href="index.html" class="nav-card">
+                <span class="nav-icon">⌂</span>
+                <div class="nav-title">Home</div>
+                <div class="nav-description">Main Topics</div>
+            </a>
+            
+            <a href="network-security.html" class="nav-card">
+                <div class="arrow">→</div>
+                <div class="nav-title">Next</div>
+                <div class="nav-description">Network Security</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>
